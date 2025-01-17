@@ -20,7 +20,6 @@ offset_bottom = -279.0
 text = "Fuck you xp"
 script = ExtResource("3_2hj8l")
 
-
 [node name="level" type="Label" parent="player/Camera2D"]
 offset_left = -551.0
 offset_top = -269.0
