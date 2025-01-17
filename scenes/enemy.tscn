@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://croa723483nsf"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_7nej4"]
-[ext_resource type="Texture2D" uid="uid://4voq73l2s01r" path="res://icon.svg" id="2_6bwtg"]
+[ext_resource type="Texture2D" uid="uid://wj20q0sfq05j" path="res://image/chica.png" id="2_3avoc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_32kfu"]
 size = Vector2(62, 63)
@@ -10,9 +10,9 @@ size = Vector2(62, 63)
 script = ExtResource("1_7nej4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -2)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_6bwtg")
+position = Vector2(-2.38419e-07, -4.5)
+scale = Vector2(0.64, 0.71)
+texture = ExtResource("2_3avoc")
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
 position = Vector2(32, 30)
