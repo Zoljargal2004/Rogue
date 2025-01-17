@@ -33,6 +33,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		if area.name == 'fireball':
 			var fireball = fireball_scene.instantiate()
 			hp -= fireball.damage
+		if area.name == "thunder":
+			var thunder = area.get_parent()
+			hp -= thunder.damage
 
 func enemy_die() -> void:
 	var food = food_scene.instantiate()

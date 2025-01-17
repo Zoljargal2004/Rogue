@@ -58,6 +58,13 @@ polygon = PackedVector2Array(10, 5, 10, -5, -10, -5, -10, 5)
 wait_time = 4.0
 autostart = true
 
+[node name="thunder-stormer" type="Node2D" parent="skills"]
+
+[node name="thunder-storm-cooldown" type="Timer" parent="skills/thunder-stormer"]
+wait_time = 0.8
+autostart = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="skills/fireball_shooter/fire-ball-cooldown" to="." method="_on_fireballcooldown_timeout"]
+[connection signal="timeout" from="skills/thunder-stormer/thunder-storm-cooldown" to="." method="_on_thunderstormcooldown_timeout"]
