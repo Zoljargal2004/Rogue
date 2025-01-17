@@ -19,3 +19,10 @@ texture = ExtResource("2_gete2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bullet"]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_0k3c3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="area_entered" from="bullet" to="." method="_on_bullet_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

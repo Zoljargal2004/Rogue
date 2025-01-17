@@ -23,7 +23,9 @@ func shoot() -> void:
 	# Instance the bullet
 	var bullet = bullet_scene.instantiate()
 	bullet.direction = find_nearest_enemy_direction()
-	add_child(bullet)  # Add the bullet to the scene
+	bullet.position = position
+	
+	get_parent().add_child(bullet)  # Add the bullet to the scene
 	
 	# Set the initial position of the bullet (usually at the player’s position)
 	
@@ -69,8 +71,9 @@ func _on_timer_timeout() -> void:
 
 func shoot_fireball() -> void:
 	var fireball = fireball_scene.instantiate()
+	fireball.position = position
 	fireball.direction = find_nearest_enemy_direction()
-	add_child(fireball)
+	get_parent().add_child(fireball)
 	
 
 
