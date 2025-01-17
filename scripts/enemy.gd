@@ -28,6 +28,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.get_groups()[0] == "damage":
 		if area.name == "bullet":
 			var bullet = bullet.instantiate()
+			
 			hp -= bullet.damage
 		if area.name == 'fireball':
 			var fireball = fireball_scene.instantiate()
@@ -37,4 +38,8 @@ func enemy_die() -> void:
 	var food = food_scene.instantiate()
 	food.position = position
 	get_parent().add_child(food)
+	var death = get_parent().get_node("AudioStreamPlayer")
+	if death:
+		death.play()
 	queue_free()
+	

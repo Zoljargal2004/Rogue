@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://mig82evohyov"]
+[gd_scene load_steps=6 format=3 uid="uid://mig82evohyov"]
 
 [ext_resource type="PackedScene" uid="uid://b8y2af3v64wr4" path="res://scenes/character_body_2d.tscn" id="1_afg70"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_av76c"]
 [ext_resource type="Script" path="res://scripts/level-show.gd" id="3_2hj8l"]
 [ext_resource type="Script" path="res://scripts/level_show.gd" id="4_y0eao"]
+[ext_resource type="AudioStream" uid="uid://dnx3dv7g17k28" path="res://sound/Dying turkey.mp3" id="5_6go36"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_av76c")
@@ -31,5 +32,8 @@ script = ExtResource("4_y0eao")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_6go36")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
