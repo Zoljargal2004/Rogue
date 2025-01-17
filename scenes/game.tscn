@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://mig82evohyov"]
+
+[ext_resource type="PackedScene" uid="uid://b8y2af3v64wr4" path="res://scenes/character_body_2d.tscn" id="1_afg70"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_av76c"]
+[ext_resource type="Script" path="res://scripts/level-show.gd" id="3_2hj8l"]
+[ext_resource type="Script" path="res://scripts/level_show.gd" id="4_y0eao"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_av76c")
+
+[node name="player" parent="." instance=ExtResource("1_afg70")]
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+
+[node name="xp" type="Label" parent="player/Camera2D"]
+offset_left = -551.0
+offset_top = -302.0
+offset_right = -371.0
+offset_bottom = -279.0
+text = "Fuck you xp"
+script = ExtResource("3_2hj8l")
+
+[node name="level" type="Label" parent="player/Camera2D"]
+offset_left = -551.0
+offset_top = -269.0
+offset_right = -371.0
+offset_bottom = -246.0
+text = "Fuck you level
+"
+script = ExtResource("4_y0eao")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
