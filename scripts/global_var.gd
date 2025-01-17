@@ -1,9 +1,9 @@
-extends Node2D
+extends Node
 
-var level = 0
-var current_xp = 0
-var xp_to_next_level = 5
-
+var player_positon = Vector2(0,0)
+var wisp_count = 0
+var wisp_max_count = 5
+var player_level = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -11,8 +11,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if current_xp >= xp_to_next_level:
-		current_xp -= xp_to_next_level
-		xp_to_next_level += 5
-		level+=1
-	GlobalVar.player_level = level
+	pass

@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://dnx3dv7g17k28" path="res://sound/Dying turkey.mp3" id="5_6go36"]
 
 [node name="Game" type="Node2D"]
+position = Vector2(-4, 40)
 script = ExtResource("1_av76c")
 
 [node name="player" parent="." instance=ExtResource("1_afg70")]

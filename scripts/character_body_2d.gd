@@ -2,11 +2,12 @@ extends CharacterBody2D
 
 var bullet_scene = preload("res://scenes/bullet.tscn")
 var fireball_scene = preload("res://scenes/fireball.tscn")
-
+var wisp_scene = preload("res://scenes/wisp.tscn")
 const SPEED = 300.0
 
 
 func _physics_process(delta: float) -> void:
+	GlobalVar.player_positon = global_position
 	move()
 	
 func move() -> void:
@@ -81,3 +82,12 @@ func _on_fireballcooldown_timeout() -> void:
 	
 	print("fire ball")
 	shoot_fireball()
+
+func shoot_wisp():
+	var wisp = wisp_scene.instantiate()
+	
+	add_child(wisp)
+	GlobalVar.wisp_count +=1
+func _on_wisp_cooldown_timeout() -> void:
+	if GlobalVar.wisp_count < GlobalVar.wisp_max_count:
+		shoot_wisp()

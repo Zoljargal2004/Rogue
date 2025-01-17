@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8y2af3v64wr4"]
+[gd_scene load_steps=13 format=3 uid="uid://b8y2af3v64wr4"]
 
-[ext_resource type="Texture2D" uid="uid://4voq73l2s01r" path="res://icon.svg" id="1_f3p7f"]
 [ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="1_j3rcm"]
 [ext_resource type="Script" path="res://scripts/level_system.gd" id="3_0iw2s"]
+[ext_resource type="Texture2D" uid="uid://xkbf4rpu2ylw" path="res://image/slime-alpha-fixed.png" id="3_40nmn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikhc8"]
 size = Vector2(92, 88)
@@ -10,12 +10,59 @@ size = Vector2(92, 88)
 [sub_resource type="CircleShape2D" id="CircleShape2D_o5te7"]
 radius = 9.3003
 
-[node name="player" type="CharacterBody2D"]
-position = Vector2(406, 205)
-script = ExtResource("1_j3rcm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc20q"]
+atlas = ExtResource("3_40nmn")
+region = Rect2(0, 9, 100, 87)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_f3p7f")
+[sub_resource type="AtlasTexture" id="AtlasTexture_m26oa"]
+atlas = ExtResource("3_40nmn")
+region = Rect2(100, 9, 100, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyes1"]
+atlas = ExtResource("3_40nmn")
+region = Rect2(200, 9, 100, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3my2"]
+atlas = ExtResource("3_40nmn")
+region = Rect2(300, 9, 100, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tf7v"]
+atlas = ExtResource("3_40nmn")
+region = Rect2(400, 9, 100, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dp3k"]
+atlas = ExtResource("3_40nmn")
+region = Rect2(500, 9, 100, 87)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r420a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mc20q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m26oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyes1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3my2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tf7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dp3k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="player" type="CharacterBody2D"]
+position = Vector2(6, 7)
+script = ExtResource("1_j3rcm")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -58,6 +105,19 @@ polygon = PackedVector2Array(10, 5, 10, -5, -10, -5, -10, 5)
 wait_time = 4.0
 autostart = true
 
+[node name="wisp_shooter" type="Node2D" parent="skills"]
+
+[node name="wisp_cooldown" type="Timer" parent="skills/wisp_shooter"]
+wait_time = 0.5
+autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -2)
+sprite_frames = SubResource("SpriteFrames_r420a")
+autoplay = "default"
+frame_progress = 0.50027
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="skills/fireball_shooter/fire-ball-cooldown" to="." method="_on_fireballcooldown_timeout"]
+[connection signal="timeout" from="skills/wisp_shooter/wisp_cooldown" to="." method="_on_wisp_cooldown_timeout"]
