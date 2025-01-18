@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="1_j3rcm"]
 [ext_resource type="Script" path="res://scripts/level_system.gd" id="3_0iw2s"]
-[ext_resource type="Texture2D" uid="uid://id72c2skiyte" path="res://image/slime-alpha-fixed.png" id="3_40nmn"]
+[ext_resource type="Texture2D" uid="uid://m6h5enpom8eb" path="res://image/slime-alpha-fixed.png" id="3_40nmn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikhc8"]
 size = Vector2(92, 88)
