@@ -20,6 +20,7 @@ texture = ExtResource("2_gete2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_0k3c3")
+<<<<<<< Updated upstream
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.0
@@ -32,3 +33,5 @@ damage = 3
 [connection signal="area_entered" from="hitbox" to="." method="_on_bullet_area_entered"]
 [connection signal="area_entered" from="hitbox" to="damage" method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+=======
+>>>>>>> Stashed changes
