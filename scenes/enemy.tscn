@@ -1,27 +1,51 @@
-<<<<<<< Updated upstream
 [gd_scene load_steps=11 format=3 uid="uid://croa723483nsf"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_7nej4"]
 [ext_resource type="Script" path="res://hitbox.gd" id="2_n2cgb"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="3_jad1f"]
 [ext_resource type="Texture2D" uid="uid://b3l3vpdjhhdgf" path="res://image/boneturkey-alpha.png" id="4_3uocy"]
-=======
-[gd_scene load_steps=4 format=3 uid="uid://croa723483nsf"]
-
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_7nej4"]
-[ext_resource type="AudioStream" uid="uid://dnx3dv7g17k28" path="res://sound/Dying turkey.mp3" id="3_fge1l"]
->>>>>>> Stashed changes
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_32kfu"]
 size = Vector2(62, 63)
 
-[node name="enemy" type="Node2D" node_paths=PackedStringArray("death") groups=["enemy"]]
-script = ExtResource("1_7nej4")
-death = NodePath("AudioStreamPlayer2D")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o6o4"]
+atlas = ExtResource("4_3uocy")
+region = Rect2(0, 0, 100, 100)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2.38419e-07, -4.5)
-scale = Vector2(0.64, 0.71)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr3ur"]
+atlas = ExtResource("4_3uocy")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlsal"]
+atlas = ExtResource("4_3uocy")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hsay"]
+atlas = ExtResource("4_3uocy")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fv14f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o6o4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr3ur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlsal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hsay")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="enemy" type="Node2D" groups=["enemy"]]
+script = ExtResource("1_7nej4")
 
 [node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("health") groups=["enemy"]]
 position = Vector2(32, 30)
@@ -32,9 +56,10 @@ health = NodePath("../Health")
 position = Vector2(-32, -32.5)
 shape = SubResource("RectangleShape2D_32kfu")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_fge1l")
-volume_db = 24.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fv14f")
+autoplay = "default"
+frame_progress = 0.695193
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("3_jad1f")
