@@ -1,9 +1,6 @@
 extends Node2D
 
 var food_scene = preload("res://scenes/food.tscn")
-
-var hp = 10
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -11,28 +8,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if hp < 0:
-		enemy_die()
 	var player = get_parent().get_node("player")
 	var direction = (player.position - position).normalized()
 	var speed = 100  
 	position += direction * speed * delta
 
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.get_groups() == []:
-		return
-	
-	if area.get_groups()[0] == "damage":
-		if area.name == "bullet":
-			var bullet = area.get_parent()
-			hp -= bullet.damage
-		if area.name == 'fireball':
-			var fireball = area.get_parent()
-			hp -= fireball.damage
-		if area.name == 'wisp':
-			var wisp = area.get_parent()
-			hp -= wisp.damage
 
 func enemy_die() -> void:
 	var food = food_scene.instantiate()

@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://croa723483nsf"]
+[gd_scene load_steps=11 format=3 uid="uid://croa723483nsf"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_7nej4"]
+[ext_resource type="Script" path="res://hitbox.gd" id="2_n2cgb"]
+[ext_resource type="Script" path="res://scripts/health.gd" id="3_jad1f"]
 [ext_resource type="Texture2D" uid="uid://b3l3vpdjhhdgf" path="res://image/boneturkey-alpha.png" id="4_3uocy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_32kfu"]
@@ -45,10 +47,12 @@ animations = [{
 [node name="enemy" type="Node2D" groups=["enemy"]]
 script = ExtResource("1_7nej4")
 
-[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+[node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("health") groups=["enemy"]]
 position = Vector2(32, 30)
+script = ExtResource("2_n2cgb")
+health = NodePath("../Health")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-32, -32.5)
 shape = SubResource("RectangleShape2D_32kfu")
 
@@ -57,4 +61,5 @@ sprite_frames = SubResource("SpriteFrames_fv14f")
 autoplay = "default"
 frame_progress = 0.695193
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("3_jad1f")
