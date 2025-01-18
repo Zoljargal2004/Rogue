@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< Updated upstream
 uid="uid://xkbf4rpu2ylw"
+=======
+uid="uid://dn1ytd67hk1mb"
+>>>>>>> Stashed changes
 path="res://.godot/imported/slime-alpha-fixed.png-52646205bf248ba67273f1be99748762.ctex"
 metadata={
 "vram_texture": false
