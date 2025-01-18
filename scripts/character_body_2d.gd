@@ -82,12 +82,3 @@ func _on_fireballcooldown_timeout() -> void:
 	
 	print("fire ball")
 	shoot_fireball()
-
-func shoot_wisp():
-	var wisp = wisp_scene.instantiate()
-	
-	add_child(wisp)
-	GlobalVar.wisp_count +=1
-func _on_wisp_cooldown_timeout() -> void:
-	if GlobalVar.wisp_count < GlobalVar.wisp_max_count:
-		shoot_wisp()
