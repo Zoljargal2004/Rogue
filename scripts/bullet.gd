@@ -9,16 +9,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	position += speed * delta * direction
-	
-	
-
-
-func _on_bullet_area_entered(area: Area2D) -> void:
-	if area.get_groups() == []:
-		return
-	if area.get_groups()[0] == 'enemy':
-		queue_free()
-
-
-func _on_timer_timeout() -> void:
-	queue_free()

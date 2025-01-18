@@ -15,4 +15,3 @@ func _process(delta: float) -> void:
 		current_xp -= xp_to_next_level
 		xp_to_next_level += 5
 		level+=1
-	GlobalVar.player_level = level
