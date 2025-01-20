@@ -50,7 +50,7 @@ script = ExtResource("1_7470w")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qthho")
 autoplay = "default"
-frame_progress = 0.548462
+frame_progress = 0.310489
 
 [node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("Health_component") groups=["enemy"]]
 position = Vector2(32, 30)
