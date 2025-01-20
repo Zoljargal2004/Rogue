@@ -1,7 +1,7 @@
 extends Node2D
 
 var enemy_scene = preload("res://scenes/enemy.tscn")
-
+var bigcock_scene = preload("res://bigcock.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -36,7 +36,10 @@ func spawn_enemy() -> void:
 
 	var enemy = enemy_scene.instantiate()
 	
-
+	var bigcock = bigcock_scene.instantiate()
 	enemy.position = spawn_position
-
+	spawn_distance = randf_range(250, 500)
+	spawn_position = camera_position + direction * spawn_distance
+	bigcock.position = spawn_position
 	add_child(enemy)
+	add_child(bigcock)

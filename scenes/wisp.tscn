@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dero2vx4re3v3"]
+
+[ext_resource type="Texture2D" uid="uid://4voq73l2s01r" path="res://icon.svg" id="1_kh0do"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0plto"]
+size = Vector2(65, 62)
+
+[node name="wisp" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+rotation = -1.5708
+scale = Vector2(0.5, 0.539063)
+texture = ExtResource("1_kh0do")
+
+[node name="wisp" type="Area2D" parent="." groups=["damage"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wisp"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_0plto")
+
+[connection signal="area_entered" from="wisp" to="." method="_on_area_2d_area_entered"]

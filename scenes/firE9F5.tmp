@@ -14,14 +14,14 @@ script = ExtResource("1_d5ijn")
 scale = Vector2(0.617188, 0.623122)
 texture = ExtResource("2_imopt")
 
-[node name="hitbox" type="Area2D" parent="." groups=["damage"]]
+[node name="fireball" type="Area2D" parent="." groups=["damage"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fireball"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ossm7")
 
 [node name="damage" type="Node2D" parent="."]
 script = ExtResource("3_7lawm")
-damage = 10
+damage = null
 
-[connection signal="area_entered" from="hitbox" to="damage" method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="fireball" to="." method="_on_area_2d_area_entered"]
