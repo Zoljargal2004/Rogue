@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var speed = 100
 var food_scene = preload("res://scripts/food.gd")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,7 +11,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var player = get_parent().get_node("player")
 	var direction = (player.position - position).normalized()
-	var speed = 100  
+	
 	position += direction * speed * delta
 
 func enemy_die() -> void:

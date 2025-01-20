@@ -60,15 +60,6 @@ func find_nearest_enemy_direction() -> Vector2:
 	# Return the normalized direction vector (or Vector2.ZERO if no enemy is found)
 	return direction_vector
 
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.get_groups() == []:
-		return
-	if area.get_groups()[0] == "enemy":
-		print(" -1 HP")
-		pass
-
-
 func _on_timer_timeout() -> void:
 	shoot()
 
