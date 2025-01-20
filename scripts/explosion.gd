@@ -1,12 +1,15 @@
-extends Node2D
-@export var speed = 1000
-var direction: Vector2
+extends CPUParticles2D
+
+@onready var explosion = $"."
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("god")
+	explosion.set_deferred("emitting", true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position += speed * delta * direction
-	
+	pass
+
+
+func _on_finished() -> void:
+	queue_free()

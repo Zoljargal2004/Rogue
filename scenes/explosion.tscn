@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dixy7ne7a0p0c"]
+
+[ext_resource type="Script" path="res://scripts/explosion.gd" id="1_jt6n8"]
+
+[sub_resource type="Gradient" id="Gradient_km1c7"]
+offsets = PackedFloat32Array(0.00666667, 0.0733333, 0.166667, 0.28, 0.6, 0.706667, 1)
+colors = PackedColorArray(0.953333, 0.953333, 0.953333, 1, 0, 0, 0, 1, 0.32026, 0.32026, 0.32026, 1, 0.431655, 0.431655, 0.431655, 1, 0.791367, 0.791367, 0.791367, 1, 0.683453, 0.683453, 0.683453, 1, 1, 1, 1, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+modulate = Color(1, 0, 0, 1)
+emitting = false
+amount = 64
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.2
+lifetime_randomness = 0.7
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("Gradient_km1c7")
+script = ExtResource("1_jt6n8")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

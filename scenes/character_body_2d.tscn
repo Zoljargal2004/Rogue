@@ -55,7 +55,7 @@ polygon = PackedVector2Array(10, 5, 10, -5, -10, -5, -10, 5)
 [node name="fireball_shooter" type="Node2D" parent="skills"]
 
 [node name="fire-ball-cooldown" type="Timer" parent="skills/fireball_shooter"]
-wait_time = 4.0
+wait_time = 0.5
 autostart = true
 
 [node name="thunder-stormer" type="Node2D" parent="skills"]
