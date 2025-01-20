@@ -45,15 +45,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxrmd"]
 size = Vector2(276, 290)
 
-[node name="enemy" type="Node2D" groups=["enemy"]]
+[node name="enemy" type="Node2D" node_paths=PackedStringArray("Sprite") groups=["enemy"]]
 script = ExtResource("1_7470w")
+Sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1.00001, 3.50002)
 scale = Vector2(2.74, 2.81)
 sprite_frames = SubResource("SpriteFrames_qthho")
 autoplay = "default"
-frame_progress = 0.135891
+frame_progress = 0.801973
 
 [node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("Health_component") groups=["enemy"]]
 position = Vector2(32, 30)
