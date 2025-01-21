@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8y2af3v64wr4"]
+[gd_scene load_steps=8 format=3 uid="uid://b8y2af3v64wr4"]
 
 [ext_resource type="Texture2D" uid="uid://4voq73l2s01r" path="res://icon.svg" id="1_f3p7f"]
 [ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="1_j3rcm"]
 [ext_resource type="Script" path="res://scripts/level_system.gd" id="3_0iw2s"]
+[ext_resource type="Script" path="res://scripts/hitbox_player.gd" id="3_j0vwi"]
+[ext_resource type="Script" path="res://scripts/health_player.gd" id="5_3ucln"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikhc8"]
 size = Vector2(92, 88)
@@ -17,10 +19,15 @@ script = ExtResource("1_j3rcm")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_f3p7f")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="hitbox" type="Area2D" parent="." node_paths=PackedStringArray("collision")]
+script = ExtResource("3_j0vwi")
+collision = NodePath("CollisionShape2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("RectangleShape2D_ikhc8")
+
+[node name="Immunity" type="Timer" parent="hitbox"]
+one_shot = true
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -64,7 +71,13 @@ autostart = true
 wait_time = 0.8
 autostart = true
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[node name="health" type="Node2D" parent="." node_paths=PackedStringArray("collision", "timer")]
+script = ExtResource("5_3ucln")
+collision = NodePath("../hitbox/CollisionShape2D")
+timer = NodePath("../hitbox/Immunity")
+
+[connection signal="area_entered" from="hitbox" to="health" method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="hitbox/Immunity" to="hitbox" method="_on_immunity_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="skills/fireball_shooter/fire-ball-cooldown" to="." method="_on_fireballcooldown_timeout"]
 [connection signal="timeout" from="skills/thunder-stormer/thunder-storm-cooldown" to="." method="_on_thunderstormcooldown_timeout"]

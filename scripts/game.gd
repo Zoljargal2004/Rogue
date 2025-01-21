@@ -1,5 +1,5 @@
 extends Node2D
-
+@onready var camera = get_node("player")
 var enemy_scene = preload("res://scenes/enemy.tscn")
 var bigcock_scene = preload("res://bigcock.tscn")
 # Called when the node enters the scene tree for the first time.
@@ -14,32 +14,22 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	spawn_enemy()
+	var enemy = enemy_scene.instantiate()
+	spawn_enemy(enemy)
 
 
-func spawn_enemy() -> void:
-
-	var camera = get_node("player")
-	
+func spawn_enemy(enemy) -> void:
 
 	var camera_position = camera.position
-	
-
 	var spawn_distance = randf_range(250, 500)  
-	
-
 	var direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-		
-
 	var spawn_position = camera_position + direction * spawn_distance
 	
-
-	var enemy = enemy_scene.instantiate()
-	
-	var bigcock = bigcock_scene.instantiate()
 	enemy.position = spawn_position
 	spawn_distance = randf_range(250, 500)
 	spawn_position = camera_position + direction * spawn_distance
-	bigcock.position = spawn_position
 	add_child(enemy)
-	add_child(bigcock)
+
+func _on_bigcock_timeout() -> void:
+	var bigcock = bigcock_scene.instantiate()
+	spawn_enemy(bigcock)
