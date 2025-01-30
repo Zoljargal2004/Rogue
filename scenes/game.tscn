@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://mig82evohyov"]
+[gd_scene load_steps=7 format=3 uid="uid://mig82evohyov"]
 
 [ext_resource type="PackedScene" uid="uid://b8y2af3v64wr4" path="res://scenes/character_body_2d.tscn" id="1_afg70"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_av76c"]
 [ext_resource type="Script" path="res://scripts/level-show.gd" id="3_2hj8l"]
 [ext_resource type="Script" path="res://scripts/level_show.gd" id="4_y0eao"]
 [ext_resource type="AudioStream" uid="uid://dnx3dv7g17k28" path="res://sound/Dying turkey.mp3" id="5_6go36"]
+[ext_resource type="PackedScene" uid="uid://dmehhanp7q6u6" path="res://Skill_pop.tscn" id="6_ht0it"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_av76c")
@@ -30,6 +31,16 @@ text = "Fuck you level
 "
 script = ExtResource("4_y0eao")
 
+[node name="Button" type="Button" parent="player/Camera2D"]
+offset_left = -503.0
+offset_top = 176.0
+offset_right = -387.0
+offset_bottom = 258.0
+text = "Level up"
+
+[node name="CanvasLayer" parent="player/Camera2D" instance=ExtResource("6_ht0it")]
+visible = false
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
@@ -38,8 +49,9 @@ autostart = true
 stream = ExtResource("5_6go36")
 
 [node name="Bigcock" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 2.0
 autostart = true
 
+[connection signal="pressed" from="player/Camera2D/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Bigcock" to="." method="_on_bigcock_timeout"]

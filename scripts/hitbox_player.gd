@@ -13,4 +13,3 @@ func _process(delta: float) -> void:
 
 func _on_immunity_timeout() -> void:
 	collision.set_deferred("disabled", false)
-	print("pain")

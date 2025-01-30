@@ -22,7 +22,7 @@ autostart = true
 
 [node name="damage" type="Node2D" parent="."]
 script = ExtResource("3_2eiei")
-damage = 10
+damage = 2
 
 [node name="hitbox" type="Area2D" parent="." groups=["damage"]]
 

@@ -3,7 +3,7 @@ extends CharacterBody2D
 var bullet_scene = preload("res://scenes/bullet.tscn")
 var fireball_scene = preload("res://scenes/fireball.tscn")
 var thunder_scene = preload("res://scenes/thunder.tscn")
-
+var spear_scene = preload("res://scenes/spear.tscn")
 var size = DisplayServer.screen_get_size()
 
 const SPEED = 300.0
@@ -19,24 +19,6 @@ func move() -> void:
 	velocity = direction * SPEED
 	move_and_slide()
 
-
-func shoot() -> void:
-	
-
-	# Instance the bullet
-	var bullet = bullet_scene.instantiate()
-	bullet.direction = find_nearest_enemy_direction()
-	bullet.position = position
-	
-	get_parent().add_child(bullet)  # Add the bullet to the scene
-	
-	# Set the initial position of the bullet (usually at the player’s position)
-	
-
-	# Set the bullet's direction (you can use the direction the player is facing)
-	#bullet.direction = shoot_direction
-
-# Find the nearest enemy in the "enemies" group within the parent node
 func find_nearest_enemy_direction() -> Vector2:
 	var nearest_enemy = null
 	var nearest_distance = INF  # Start with a very large distance
@@ -61,30 +43,26 @@ func find_nearest_enemy_direction() -> Vector2:
 	return direction_vector
 
 func _on_timer_timeout() -> void:
-	shoot()
-
-func shoot_fireball() -> void:
-	var fireball = fireball_scene.instantiate()
-	fireball.position = position
-	fireball.direction = find_nearest_enemy_direction()
-	get_parent().add_child(fireball)
-	
-
+	shoot_all(bullet_scene,position,find_nearest_enemy_direction())
 
 func _on_fireballcooldown_timeout() -> void:
-	
-	shoot_fireball()
-
-
+	shoot_all(fireball_scene, position, find_nearest_enemy_direction())
 
 func _on_thunderstormcooldown_timeout() -> void:
-	thunder_boom()
+	shoot_all(thunder_scene,random_position(),Vector2(0,0))
 
-func thunder_boom() -> void:
-	var thunder = thunder_scene.instantiate()
+func _on_spear_cooldown_timeout() -> void:
+	shoot_all(spear_scene, position, find_nearest_enemy_direction())
+	
+func random_position():
 	var camera_position = self.position
 	var x = size[0] / 2
 	var y = size[1] / 2
 	var random_position = Vector2(camera_position[0] + randf_range(-x, x), camera_position[1] + randf_range(-y, y))
-	get_parent().add_child(thunder)
-	thunder.position = random_position
+	return random_position
+	
+func shoot_all(skill, skill_posiotion, skill_direction):
+	var skill_instat = skill.instantiate()
+	skill_instat.position = skill_posiotion
+	skill_instat.direction = skill_direction
+	get_parent().add_child(skill_instat)
