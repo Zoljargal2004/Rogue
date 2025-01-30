@@ -17,6 +17,5 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		health -= 1
 		collision.set_deferred("disabled", true)
 		timer.start()
-	print(health)
 	if health <= 0:
 		get_tree().change_scene_to_file("res://scenes/menu.tscn")

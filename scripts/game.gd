@@ -33,3 +33,7 @@ func spawn_enemy(enemy) -> void:
 func _on_bigcock_timeout() -> void:
 	var bigcock = bigcock_scene.instantiate()
 	spawn_enemy(bigcock)
+
+
+func _on_button_pressed() -> void:
+	$player/Camera2D/CanvasLayer.show_popup()

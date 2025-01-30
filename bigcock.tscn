@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://2ogeds6ybp5y"]
+[gd_scene load_steps=13 format=3 uid="uid://2ogeds6ybp5y"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_7470w"]
 [ext_resource type="Texture2D" uid="uid://bj6m1w71hm65x" path="res://image/chadock.png" id="2_lj04r"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_r1pu4"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="4_rttmv"]
 [ext_resource type="PackedScene" uid="uid://dixy7ne7a0p0c" path="res://scenes/explosion.tscn" id="5_7gie6"]
+[ext_resource type="Script" path="res://Bigdick/speed.gd" id="6_5hpfo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jycd4"]
 atlas = ExtResource("2_lj04r")
@@ -69,3 +70,7 @@ shape = SubResource("RectangleShape2D_dxrmd")
 script = ExtResource("4_rttmv")
 health = 500
 death = ExtResource("5_7gie6")
+
+[node name="Speed" type="Node" parent="." node_paths=PackedStringArray("Bigdick")]
+script = ExtResource("6_5hpfo")
+Bigdick = NodePath("..")

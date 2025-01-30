@@ -20,7 +20,7 @@ func damage(attack):
 		death_effect.position = global_position
 		get_parent().get_parent().add_child(death_effect)
 		spawn_food()
-		get_parent().queue_free()
+
 		
 
 func spawn_food() -> void:
@@ -28,4 +28,4 @@ func spawn_food() -> void:
 	food.xp = 2
 	food.position = get_parent().position
 	get_parent().get_parent().add_child(food)
-	print(food.position)
+	get_parent().queue_free()
